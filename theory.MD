@@ -1,7 +1,7 @@
 
 # Safe Counter
 
-Safe counter merupakan cara/mekanisme yang digunakan oleh banyak goroutine untuk melakukan counter update/modifikasi pada suatu data yang di akses oleh banyak goroutine secara bersamaan untuk menghindari terjadinya race condition.
+Safe counter merupakan cara/mekanisme yang digunakan oleh goroutine untuk melakukan counter pada suatu data yang di akses oleh banyak goroutine secara bersamaan untuk menghindari terjadinya race condition.
 
 Berikut ini beberapa cara Untuk membuatnya thread-safe: 
 
@@ -45,7 +45,7 @@ func (c *Counter) Value() int {
 
 Mutex cocok untuk data kompleks (misalnya struct dengan banyak field) karena bisa melindungi lebih dari satu variabel.
 
-Adapula Atomic, cocok untuk counter sederhana, lebih cepat karena tidak ada mekanisme lock/unlock.
+Kita juga bisa menggunakan Atomic operation untuk counter sederhana, lebih cepat karena tidak ada mekanisme lock/unlock.
 
 Jadi, Safe Counter di Go adalah implementasi counter yang bisa diakses oleh banyak goroutine secara bersamaan tanpa race condition, jika menggunakan struct yang kompleks, gunakan mutex dan gunakan atomic operations untuk operasi yang lebih sederhana.
 
